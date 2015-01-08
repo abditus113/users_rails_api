@@ -23,4 +23,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
     assert_equal ["must be greater than 0"], user.errors.messages[:age]
   end
+
+  test "should skip nil fields" do
+    user = User.new(name: 'john', age: nil).as_json
+    assert_not user.has_key? "age"
+  end
 end

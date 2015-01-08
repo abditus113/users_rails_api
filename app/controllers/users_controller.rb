@@ -4,10 +4,4 @@ class UsersController < ApplicationController
 
     render json: @users, root: false
   end
-
-  private
-
-    def user_params
-      params.require(:user).permit(:name, :age)
-    end
 end
